@@ -66,6 +66,8 @@ router.post("/buy", function (req, res, next) {
   res.render("index", { Products, item: req.session.basket.length });
 });
 
+/**la route “/basket” qui affichera les informations détaillées du panier. */
+
 router.get("/basket", function (req, res, next) {
   res.render("basket", {
     basket: req.session.basket,

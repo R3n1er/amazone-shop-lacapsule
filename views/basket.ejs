@@ -14,7 +14,8 @@
       <a href="/"><button type="button" class="btn btn-primary">Retour</button></a>
       AmazZone
       <div>
-        <img src="images/shopping-bag.svg" class="shopping"><span class="badge badge-pill badge-dark">0</span>
+                <!-- on affiche la valeur de "item" envoyé depuis la route "/basket"  -->
+        <img src="images/shopping-bag.svg" class="shopping"><span class="badge badge-pill badge-dark"><%=item%></span>
       </div>
     </div>
   </div>
@@ -24,13 +25,28 @@
 
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-          <div>
-            Nom du produit
-          </div>
-          0€
-        </li>
-        <li class="list-group-item d-flex justify-content-end align-items-center flex-wrap">Total : 0€</li>
-      </ul>
+
+          <% var panier = 0%>
+          <% if(item == 0){%>
+            <h2>Panier Vide</h2>
+        <%  }
+        else{%>
+        <ul class="list-group">
+          <%for(var i=0; i<basket.length; i++){%>
+            <%panier = panier+basket[i].price%>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <div>
+                <%=basket[i].name%>
+              </div>
+              <%=basket[i].price%>€
+            </li>
+          <%}%>
+          <li class="list-group-item d-flex justify-content-end align-items-center flex-wrap">Total : <%=panier%>€</li>
+        </ul>
+        
+        <%}%>
+
 
     </div>
   </div>

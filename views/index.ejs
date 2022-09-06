@@ -20,14 +20,25 @@
   <div class="container-fluid">
     <div class="row justify-content-around align-items-center background">
 
+<% for(var i=0; i<Products.length;i++){%>
+
       <div class="card mt-2">
-        <img src="images/apple-watch.png" class="card-img-top">
+        <img src="images/<%=Products[i].image%>.png" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">Apple watch</h5>
-          <p class="card-text">300€</p>
-          <button class="btn btn-primary" name="button">Buy</button>
+          <h5 class="card-title"><%=Products[i].name%></h5>
+          <p class="card-text"><%=Products[i].price%></p>
+            <form action="/buy" method="post">
+              <input type="hidden" name="position" value="<%=i%>">
+              <button class="btn btn-primary" name="button">Buy</button>
+            </form>
         </div>
       </div>
+
+  <%
+} %> 
+
+
+      
 
     </div>
   </div>
